@@ -1,9 +1,9 @@
 function githubLink(github){
-  var g = github;
-  if(g.indexOf('@') != 0){
-    return g + ': is not a valid github user';
+  var github = github;
+  if(github.indexOf('@') != 0){
+    return github + ': is not a valid github user';
   }
-  return 'https://github.com/' + g.substring(1,g.length);
+  return 'https://github.com/' + github.substring(1,github.length);
 }
 
 function renderLicenseBadge(license) {
@@ -18,10 +18,10 @@ function renderLicenseBadge(license) {
 
 function renderLicenseLink(license) {
   const badges= {
-    ISC:'[ISC](https://opensource.org/licenses/ISC)',
-    MIT:'[MIT](https://opensource.org/licenses/MIT)',
-    MOZILLA:'[MOZILLA](https://opensource.org/licenses/MPL-2.0)',
-    ODBL:'[ODBL](https://opendatacommons.org/licenses/odbl/)',
+    ISC:'[ISC](https://choosealicense.com/licenses/isc/)',
+    MIT:'[MIT](https://choosealicense.com/licenses/mit/)',
+    MOZILLA:'[MOZILLA](https://choosealicense.com/licenses/mpl-2.0/)',
+    ODBL:'[ODBL](https://choosealicense.com/licenses/odbl-1.0/)',
   }
   return badges[license];
 }

@@ -65,7 +65,7 @@ function writeToFile(fileName, data) {
         if(err){
             console.log("Could not save file: ", err);
         }else {
-        console.log("Sucess: new README.md file generated inside the docs folder!");
+        console.log("Sucess: A new README.md file has been generated inside the docs folder!");
         }
     });
 }
@@ -81,9 +81,7 @@ function init() {
     .catch((error) => {
         if (error.isTtyError) {
             console.log("Prompt couldn't be rendered in the current environment.")
-          // Prompt couldn't be rendered in the current environment
         } else {
-          // Something else went wrong
           console.log("error other than prompt")
         }
     });
@@ -96,7 +94,7 @@ function deleteReadme(){
                 if (err) {
                     throw err;
                 }
-                console.log("Old README.md file deleted successfully.");
+                console.log("The Old README.md file has been deleted successfully!.");
             });
         }
       } catch(err) {
