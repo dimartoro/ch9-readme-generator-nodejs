@@ -76,7 +76,7 @@ function init() {
     .then((answers) =>{
         deleteReadme();
         const mark = generateMarkdown(answers);
-        writeToFile('./docs/README.md', mark);
+        writeToFile('./utils/README.md', mark);
     })
     .catch((error) => {
         if (error.isTtyError) {
@@ -89,8 +89,8 @@ function init() {
 
 function deleteReadme(){
     try {
-        if (fs.existsSync('./docs/README.md')) {
-            fs.unlink('./docs/README.md', (err) => {
+        if (fs.existsSync('./utils/README.md')) {
+            fs.unlink('./utils/README.md', (err) => {
                 if (err) {
                     throw err;
                 }
