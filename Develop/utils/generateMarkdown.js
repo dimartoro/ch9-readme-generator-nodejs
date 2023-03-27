@@ -1,5 +1,11 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+function githubLink(github){
+  var g = github;
+  if(g.indexOf('@') != 0){
+    return g + ': is not a valid github user';
+  }
+  return 'https://github.com/' + g.substring(1,g.length);
+}
+
 function renderLicenseBadge(license) {
   const badges= {
     ISC:'[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)',
@@ -10,8 +16,6 @@ function renderLicenseBadge(license) {
   return badges[license];
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
 function renderLicenseLink(license) {
   const badges= {
     ISC:'[ISC](https://opensource.org/licenses/ISC)',
@@ -22,8 +26,6 @@ function renderLicenseLink(license) {
   return badges[license];
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
 function renderLicenseSection(license) {
   if(license == null || license == undefined){
     return '';
@@ -32,7 +34,6 @@ function renderLicenseSection(license) {
   return 'This app is licensed under ' + renderLicenseLink(license) + ' lincense';
 }
 
-// TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `
 # ${data.title}
@@ -50,6 +51,7 @@ ${data.description}
 - [Email](#email)
 - [GitHub](#github)
 - [License](#license)
+- [VideoLink](#videolink)
 
 ## Installation
 ${data.installation}
@@ -68,10 +70,13 @@ Contact me with additional questions at this email address:\r\n
 ${data.email}
 
 ## GitHub
-${data.github}
+${githubLink(data.github)}
 
 ## License
 ${renderLicenseSection(data.license)}
+
+## VideoLink
+https://drive.google.com/file/d/1Ic14KwgC7xy8tJC7A5SB_llg_hcsXhf1/view
 
 `;
 }

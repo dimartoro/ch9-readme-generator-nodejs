@@ -1,9 +1,7 @@
-// TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
-inquirer
-.prompt([
+const questions = [
     {
         type:'input',
         message:'Project Title?',
@@ -60,20 +58,26 @@ inquirer
         
     },
 
-    ])
+];
+
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, function(err){
+        if(err){
+            console.log("Could not save file: ", err);
+        }else {
+        console.log("Sucess: new README.md file generated inside the docs folder!");
+        }
+    });
+}
+
+function init() {
+    inquirer
+    .prompt(questions)
     .then((answers) =>{
-        //writeToFile(answers.ProjectTitle + '.md', answers);
+        deleteReadme();
         const mark = generateMarkdown(answers);
-        fs.writeFile('./docs/README.md', mark, function(err){
-            if(err){
-                console.log("Could not save file: ", err);
-            }else {
-            console.log("Sucess: new README.md file generated inside the docs folder!");
-            }
-        });
-
+        writeToFile('./docs/README.md', mark);
     })
-
     .catch((error) => {
         if (error.isTtyError) {
             console.log("Prompt couldn't be rendered in the current environment.")
@@ -83,17 +87,21 @@ inquirer
           console.log("error other than prompt")
         }
     });
+}
 
-// TODO: Create an array of questions for user input
-const questions = [];
+function deleteReadme(){
+    try {
+        if (fs.existsSync('./docs/README.md')) {
+            fs.unlink('./docs/README.md', (err) => {
+                if (err) {
+                    throw err;
+                }
+                console.log("Old README.md file deleted successfully.");
+            });
+        }
+      } catch(err) {
+        console.error(err)
+      }
+}
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
-
-// TODO: Create a function to initialize app
-function init() {}
-
-// Function call to initialize app
 init();
-
-
