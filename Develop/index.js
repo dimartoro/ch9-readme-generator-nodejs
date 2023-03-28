@@ -65,7 +65,7 @@ function writeToFile(fileName, data) {
         if(err){
             console.log("Could not save file: ", err);
         }else {
-        console.log("Sucess: A new README.md file has been generated inside the utils folder!");
+        console.log("Sucess: A new README.md file has been generated inside the Develop folder!");
         }
     });
 }
@@ -76,7 +76,7 @@ function init() {
     .then((answers) =>{
         deleteReadme();
         const mark = generateMarkdown(answers);
-        writeToFile('./utils/README.md', mark);
+        writeToFile('./README.md', mark);
     })
     .catch((error) => {
         if (error.isTtyError) {
@@ -89,8 +89,8 @@ function init() {
 
 function deleteReadme(){
     try {
-        if (fs.existsSync('./utils/README.md')) {
-            fs.unlink('./utils/README.md', (err) => {
+        if (fs.existsSync('./README.md')) {
+            fs.unlink('./README.md', (err) => {
                 if (err) {
                     throw err;
                 }
