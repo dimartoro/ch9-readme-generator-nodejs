@@ -65,7 +65,7 @@ function writeToFile(fileName, data) {
         if(err){
             console.log("Could not save file: ", err);
         }else {
-        console.log("Sucess: A new README.md file has been generated inside the docs folder!");
+        console.log("Sucess: A new README.md file has been generated inside the utils folder!");
         }
     });
 }
